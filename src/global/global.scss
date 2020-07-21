@@ -1,0 +1,21 @@
+$cd-primary: #262626;
+body,
+html {
+  height: 100%;
+}
+body {
+  background-color: $cd-primary;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  text-align: center;
+}
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}

@@ -1,18 +1,28 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import "./App.css";
+import { Switch, Route, withRouter } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import Nav from "./component/Nav/Nav";
+import Home from "./pages/home/Home";
+import Contact from "./pages/contact/Contact";
+import Jeu from "./pages/jeu/Jeu";
+import "./App.scss";
+import "./global/global.scss";
 
-function App() {
+const App = ({ location }) => {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/contact" component={Contact} />
-      </Switch>
+    <div>
+      <Nav />
+      <TransitionGroup>
+        <CSSTransition key={location.key} classNames={"slide"} timeout={1000}>
+          <Switch location={location}>
+            <Route exact path="/" component={Home} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/jeu" component={Jeu} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </div>
   );
-}
+};
 
-export default App;
+export default withRouter(App);
